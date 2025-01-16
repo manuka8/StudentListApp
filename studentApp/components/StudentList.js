@@ -9,12 +9,18 @@ export default function StudentList({route}) {
   const [mystudents,setStudent] = useState(students);
   const [rerender,setRerender]=useState(false);
   React.useEffect(() => {
+    // Handle adding a new student
     if (route.params?.newStudent) {
-      const {newStudent} = route.params;
-      setStudent((prev)=>[...prev,{...newStudent}]);
-      setRerender(!rerender);
+      const { newStudent } = route.params;
+      setStudent((prev) => [...prev, newStudent]); // Append new student to the list
     }
-  }, [route.params?.newStudent]);
+
+    // Handle deleting a student by ID
+    if (route.params?.id) {
+      const studentIdToDelete = route.params.id;
+      setStudent((prev) => prev.filter((student) => student.id !== studentIdToDelete)); // Remove the student
+    }
+  }, [route.params?.newStudent, route.params?.id]);
   return (
     <View>
       <FlatList
