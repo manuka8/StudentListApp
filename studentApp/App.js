@@ -6,6 +6,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import StudentList from './components/StudentList';
 import Profile from './components/Profile';
+import AddStudent from './components/AddStudent';
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -20,6 +21,7 @@ export default function App() {
         }}>
           <Stack.Screen name='StudentList' component={StudentList} options={{ title: "UoV Health Care" }} />
           <Stack.Screen name='Profile' component={Profile} options={{ title: "UoV Health Care" }} />
+          <Stack.Screen name='AddStudent' component={AddStudent} options={{ title: "UoV Health Care" }} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>
