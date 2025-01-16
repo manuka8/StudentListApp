@@ -1,21 +1,23 @@
 import { View } from "react-native";
 import { Button, TextInput } from "react-native-paper";
 import { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
 
 export default function AddStudent() {
-  const [name, setName] = useState("");
+    const navigation = useNavigation();
+  const [name, setName] = useState();
   const newStudent = {
-    id: 21,
+    id: 19, 
     name: name,
     age: 21,
-    address: "123 Maple Street, Springfield",
-    email: "alice.johnson@example.com",
+    address: "123 Maple Street, Springfield", 
+    email: "default.email@example.com",
     
   } 
   return (
     <View>
       <TextInput
-        label="Email"
+        label="Name"
         value={name}
         onChangeText={setName}
         mode="outlined"
@@ -23,9 +25,9 @@ export default function AddStudent() {
 
       <Button
         onPress={() => {
-          navigation.popTo("StudentList", { newstudent: text });
+          navigation.popTo("StudentList", { newStudent});
         }}
-      ></Button>
+      >ADD</Button>
     </View>
   );
 }
