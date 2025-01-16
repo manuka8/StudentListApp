@@ -8,17 +8,14 @@ export default function StudentList({route}) {
   const navigation = useNavigation();
   const [mystudents,setStudent] = useState(students);
   const [rerender,setRerender]=useState(false);
-  React.useEffect(() => {
-    // Handle adding a new student
-    if (route.params?.newStudent) {
+  React.useEffect(() => {    if (route.params?.newStudent) {
       const { newStudent } = route.params;
-      setStudent((prev) => [...prev, newStudent]); // Append new student to the list
+      setStudent((prev) => [...prev, newStudent]);
     }
 
-    // Handle deleting a student by ID
     if (route.params?.id) {
       const studentIdToDelete = route.params.id;
-      setStudent((prev) => prev.filter((student) => student.id !== studentIdToDelete)); // Remove the student
+      setStudent((prev) => prev.filter((student) => student.id !== studentIdToDelete)); 
     }
   }, [route.params?.newStudent, route.params?.id]);
   return (
