@@ -5,6 +5,13 @@ import { useNavigation } from "@react-navigation/native";
 
 export default function StudentList() {
   const navigation = useNavigation();
+  React.useEffect(() => {
+    if (route.params?.post) {
+      // Post updated, do something with `route.params.post`
+      // For example, send the post to the server
+      alert('New post: ' + route.params?.post);
+    }
+  }, [route.params?.post]);
   return (
     <View>
       <FlatList
@@ -27,9 +34,7 @@ export default function StudentList() {
       <Button
         
         mode="contained"
-        onPress={() =>{
-            navigation.navigate("AddStudent")
-        }}
+        onPress={() => navigation.navigate("AddStudent")}
       >
         ADD STUDENT
       </Button>
